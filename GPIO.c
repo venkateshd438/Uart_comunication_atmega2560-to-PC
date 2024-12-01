@@ -1,6 +1,3 @@
-DDRD |= (1 << PD1);   // Set PD1 (TX0) as output
-DDRD &= ~(1 << PD0);  // Set PD0 (RX0) as input
-
 
 #include "GPIO.h"
 
