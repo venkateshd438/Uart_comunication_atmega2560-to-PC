@@ -4,10 +4,16 @@
 #include "typedef.h"
 // Uart 
 volatile uint32_t elapsed_time_us = 0;  // Microseconds elapsed
-
+volatile uint8_t* ddrd = (uint8_t*)0x2A;
 
 void UART1_Init(void) {
     // Set baud rate
+    // Set PD3 (TX1) as output
+    *ddrd |= (1 << 3);
+
+    // Set PD2 (RX1) as input
+    *ddrd &= ~(1 << 2);
+
 
     baud_rate->UBRR1H = (uint8_t)(UBRR_VALUE >> 8);
     baud_rate->UBRR1L = (uint8_t)UBRR_VALUE;
